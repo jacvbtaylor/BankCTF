@@ -1,0 +1,101 @@
+## BANK CTF Story Guide
+### _By Jacvbtaylor_
+
+
+
+                Tools you may need to install: 
+                          apt install dirb
+                         apt install hydra 
+                        apt install crunch
+
+
+# Step 1:
+
+Roger at work mentioned a new bank opening up in one of the small towns in your area. He said someone had reached out to him about designing their website but he declined because the pay was going to be too little and said whoever ends up building the site probably won’t know what they are doing. 
+
+You decide you want to check out the site and look for some vulnerabilities. 
+
+# Step 2: 
+
+Scan their server and see if you notice anything special about it.
+
+
+# Step 3:
+
+Did you notice a server with http/port80 running? Maybe they have a website up. 
+
+# Step 4: 
+
+Roger was definitely right about the site being built poorly. The button doesn’t even work   
+on the index page.
+
+# Step 5:
+
+The page seems interesting. Maybe save it for later? 
+
+# Step 6: 
+
+Do you think there are more hidden pages on this site? Run a dirb attack to see if 
+anything comes up 
+
+# Step 7:
+
+Find the first flag and gather some information from what you find on the site.
+
+# Step 8: 
+
+Try and gain access to the wordpress site. Find the login page. Use hydra to bruteforce into the site. 
+
+# Step 9:
+
+Find flag 2 and escalate privileges
+Do you think you found the admin’s username? Bruteforce the wordpress again with hydra
+
+# Step 10: 
+
+Find flag 3. What other clues did you find?
+Do you think we should save our decoded message? 
+
+
+# Step 11: 
+
+Do you recall any open ports for remote access? Use hydra to bruteforce into the server
+
+# Step 12: 
+
+Try logging into the server to find flag 4.
+
+# Step 13: 
+
+Look around! Make sure to use ``la -a`` to view hidden files.
+
+Find the script in the user’s home directory. It looks like it is used for something 
+ 	uninteresting but specific. 
+
+Maybe it has an exploit that will be useful to you. Run the script and try to figure out how it works by changing some of your user input, one field at a time. You may need to use ``sudo ./script.sh``
+
+Try and dump the /etc/shadow file
+
+Do you see flag 5?
+
+
+# Step 14:
+
+Keep exploring. Is anything hiding? Maybe there are some messages for Cat in here.
+
+# Step 15: 
+
+Root wants Cat to make a wordlist using crunch to find flag 6.
+
+# Step 16: 
+
+Use the word count of that crunch list. Look for 
+
+“Crunch will now generate the following number of lines:” for root’s password. 
+
+This list is very large. Feel free to hit CTRL X or CTRL Z to stop the list from completing.
+
+# Step 17: 
+
+Switch to the root user and find the last flag. 
+You now own the bank’s server. Have fun!
