@@ -22,7 +22,7 @@ You should not have any issues if both are running on bridged mode</p>
 <li class="has-line-data" data-line-start="29" data-line-end="30">Use hydra to bruteforce a website login</li>
 <li class="has-line-data" data-line-start="30" data-line-end="31">Bruteforce SSH login</li>
 <li class="has-line-data" data-line-start="31" data-line-end="32">Escalate privilegs</li>
-<li class="has-line-data" data-line-start="32" data-line-end="33">Exploit a program to dump /etc/passwd</li>
+<li class="has-line-data" data-line-start="32" data-line-end="33">Exploit a program to dump /etc/shadow</li>
 <li class="has-line-data" data-line-start="33" data-line-end="34">Create a wordlist using crunch</li>
 <li class="has-line-data" data-line-start="34" data-line-end="36">Become root</li>
 </ul>
