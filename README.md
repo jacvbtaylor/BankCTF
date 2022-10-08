@@ -1,6 +1,8 @@
 <h1 class="code-line" data-line-start=1 data-line-end=2 ><a id="BankCTF_1"></a>BankCTF</h1>
 <p class="has-line-data" data-line-start="2" data-line-end="3"><em>by jacvbtaylor</em></p>
-<p class="has-line-data" data-line-start="5" data-line-end="6">I created this CTF with the intent to help individuals who are wanting to learn how to hack but do not have any experiences doing so.</p>
+<p class="has-line-data" data-line-start="5" data-line-end="6">PLEASE TRY USING MY TRYHACKMEROOM FIRST: https://tryhackme.com/room/bankctf.
+
+I created this CTF with the intent to help individuals who are wanting to learn how to hack but do not have any experiences doing so.</p>
 <p class="has-line-data" data-line-start="7" data-line-end="8">You will need access to an attacker virtual machine in order to investigate agaisnt this CTF machine.</p>
 <p class="has-line-data" data-line-start="9" data-line-end="10"><em>If you aren’t sure how to do that, follow the steps here:</em></p>
 <pre><code class="has-line-data" data-line-start="11" data-line-end="13" class="language-sh">https://www.youtube.com/watch?v=wX75Z-<span class="hljs-number">4</span>MEoM&amp;ab_channel=NetworkChuck
